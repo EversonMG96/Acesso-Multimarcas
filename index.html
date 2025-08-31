@@ -1,35 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>Acesso Multimarcas</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="style.css" rel="stylesheet">
-        <script src="https://cdn.tailwindcss.com"></script>
-    </head>
-    <body class="bg-gray-900 text-gray-100 antialiased">
-        <!-- cabeçalho / barra de navegação -->
-        <header class="py-6 fixed top-0 left-0 w-full z-50 bg-black bg-opacity-70 backdrop-blur-md">
-            <div class="container flex justify-between items-center px-4">
-            <a href="#" class="text-2xl sm:text-3xl font-bold text-green-500 tracking-wide">Acesso Multimarcas</a>
+<html lang="pt-br" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sua Revenda de Carros Premium</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+        .bg-pattern {
+            background-image: radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .dark .bg-pattern {
+            background-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+        }
+        .page-section {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100 antialiased">
+
+    <!-- Cabeçalho / Barra de Navegação -->
+    <header class="py-4 fixed top-0 left-0 w-full z-50 bg-white bg-opacity-80 dark:bg-black dark:bg-opacity-70 backdrop-blur-md transition-colors duration-300">
+        <div class="container mx-auto flex justify-between items-center px-4 md:px-8">
+            <a href="#" class="text-2xl sm:text-3xl font-bold text-green-500 tracking-wide">Revenda Motors</a>
             <!-- Menu de Navegação para Desktop -->
             <nav class="hidden md:flex space-x-4 lg:space-x-8 text-sm font-semibold">
                 <a href="#" onclick="showPage('home')" class="hover:text-green-500 transition-colors">Veículos</a>
                 <a href="#" onclick="showPage('home'); scrollToSection('sobre')" class="hover:text-green-500 transition-colors">Sobre Nós</a>
                 <a href="#" onclick="showPage('home'); scrollToSection('contato')" class="hover:text-green-500 transition-colors">Contato</a>
             </nav>
-            <!-- Botão do Menu para Celular -->
-            <button id="menu-toggle" class="md:hidden text-gray-100 focus:outline-none">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-            </button>
+            <!-- Botões de Ação para Celular e Tema -->
+            <div class="flex items-center space-x-4">
+                <button id="theme-toggle" class="p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500 transition-colors">
+                    <!-- Ícone de Sol (Tema Claro) -->
+                    <svg class="w-6 h-6 text-yellow-500 hidden dark:block" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.746 4.671a.75.75 0 01-.018 1.059l-1.5 1.5a.75.75 0 01-1.06-1.06l1.5-1.5a.75.75 0 011.078.001zm8.508 0a.75.75 0 011.06-1.06l1.5 1.5a.75.75 0 01-1.06 1.06l-1.5-1.5zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zm12 0a.75.75 0 01.75-.75h2.25a.75.75 0 010 1.5h-2.25a.75.75 0 01-.75-.75zM8.44 18.33a.75.75 0 011.06 0l1.5 1.5a.75.75 0 11-1.06 1.06l-1.5-1.5a.75.75 0 010-1.06zm7.06-1.06a.75.75 0 111.06 1.06l-1.5 1.5a.75.75 0 11-1.06-1.06l1.5-1.5zM12 9a3 3 0 100 6 3 3 0 000-6z"></path><path d="M22.871 16.149a.75.75 0 00-1.06 0L12 21.91l-9.811-9.81a.75.75 0 10-1.061 1.06l10.34 10.34a.75.75 0 001.06 0l10.34-10.34a.75.75 0 000-1.061z"></path></svg>
+                    <!-- Ícone de Lua (Tema Escuro) -->
+                    <svg class="w-6 h-6 text-gray-800 dark:hidden block" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 3a9 9 0 109 9c0-.528-.052-1.042-.152-1.545a9.001 9.001 0 00-7.848-13.881z"></path></svg>
+                </button>
+                <button id="menu-toggle" class="md:hidden text-gray-900 dark:text-gray-100 focus:outline-none">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
         </div>
-        </header>
+    </header>
 
-        <!-- menu mobile -->
-          <div id="mobile-menu" class="fixed top-0 left-0 h-full w-full bg-black bg-opacity-90 z-40 hidden flex-col items-center justify-center space-y-8 text-xl transition-transform transform -translate-x-full">
-        <button id="close-menu" class="absolute top-6 right-6 text-gray-100 focus:outline-none">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-            </button>
+    <!-- Menu Mobile -->
+    <div id="mobile-menu" class="fixed top-0 left-0 h-full w-full bg-white bg-opacity-90 dark:bg-black dark:bg-opacity-90 z-40 hidden flex-col items-center justify-center space-y-8 text-xl transition-transform transform -translate-x-full">
+        <button id="close-menu" class="absolute top-6 right-6 text-gray-900 dark:text-gray-100 focus:outline-none">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
         <a href="#" onclick="showPage('home'); closeMobileMenu();" class="hover:text-green-500 transition-colors">Veículos</a>
         <a href="#" onclick="showPage('home'); scrollToSection('sobre'); closeMobileMenu();" class="hover:text-green-500 transition-colors">Sobre Nós</a>
         <a href="#" onclick="showPage('home'); scrollToSection('contato'); closeMobileMenu();" class="hover:text-green-500 transition-colors">Contato</a>
@@ -39,7 +70,7 @@
         <!-- Conteúdo da Página Inicial -->
         <div id="home-page" class="page-section" style="display: block;">
             <!-- Seção de Destaque com Carrossel -->
-            <section class="relative h-screen flex items-center justify-center overflow-hidden bg-pattern px-4">
+            <section class="relative h-screen flex items-center justify-center overflow-hidden bg-pattern px-4 py-24">
                 <div id="hero-carousel" class="absolute inset-0 z-0">
                     <div class="carousel-slide w-full h-full absolute inset-0 transition-opacity duration-1000 opacity-0">
                         <img src="https://images.unsplash.com/photo-1620701196414-b6dd01db671a?q=80&w=2070&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/0A0A0A/E0E0E0?text=Carro+Premium+1'" alt="Imagem de carro de luxo" class="w-full h-full object-cover">
@@ -51,7 +82,7 @@
                         <img src="https://images.unsplash.com/photo-1575218822074-d4b1a4325a7a?q=80&w=2070&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/0A0A0A/E0E0E0?text=Carro+Premium+3'" alt="Imagem de carro de luxo 3" class="w-full h-full object-cover">
                     </div>
                     <div class="absolute inset-0 bg-black opacity-60"></div>
-
+                
                     <!-- Botões de Navegação do Carrossel -->
                     <button class="absolute left-4 top-1/2 -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full hover:bg-opacity-70 transition-colors z-20" onclick="changeSlide('hero-carousel', -1)">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
@@ -61,7 +92,7 @@
                     </button>
                 </div>
                 
-                <div class="relative z-10 text-center max-w-2xl">
+                <div class="relative z-10 text-center max-w-2xl px-4">
                     <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-4 text-white">Sua Jornada Começa Aqui</h1>
                     <p class="text-base sm:text-lg text-gray-300 mb-8">Encontre o veículo perfeito para você, combinando luxo, tecnologia e a performance que você sempre quis.</p>
                     <a href="#" onclick="scrollToSection('veiculos')" class="inline-block bg-green-500 text-gray-900 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-green-400 transition-transform transform hover:scale-105">Ver Veículos</a>
@@ -69,33 +100,33 @@
             </section>
 
             <!-- Seção de Veículos em Destaque -->
-            <section id="veiculos" class="py-16 sm:py-20 bg-gray-900 px-4">
-                <div class="container">
-                    <h2 class="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 text-gray-100">Veículos em Destaque</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            <section id="veiculos" class="py-16 sm:py-20 bg-gray-100 dark:bg-gray-900 px-4 md:px-8 transition-colors duration-300">
+                <div class="container mx-auto">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 text-gray-900 dark:text-gray-100">Veículos em Destaque</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                         <!-- Cartão de Veículo 1 -->
-                        <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 group">
+                        <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 group">
                             <img src="https://images.unsplash.com/photo-1621289196309-8472535b91b5?q=80&w=2070&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1F2937/D1D5DB?text=Audi+R8'" alt="Audi R8" class="w-full h-48 object-cover">
                             <div class="p-6 text-center">
-                                <h3 class="text-xl sm:text-2xl font-semibold mb-2 text-gray-100">Audi R8</h3>
+                                <h3 class="text-xl sm:text-2xl font-semibold mb-2 text-gray-900 dark:text-gray-100">Audi R8</h3>
                                 <p class="text-green-500 font-bold text-lg sm:text-xl mb-4">R$ 950.000</p>
                                 <button onclick="showDetails('audi_r8')" class="w-full bg-green-500 text-gray-900 font-bold py-2 px-4 rounded-full transition-colors group-hover:bg-green-400">Ver Detalhes</button>
                             </div>
                         </div>
                         <!-- Cartão de Veículo 2 -->
-                        <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 group">
+                        <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 group">
                             <img src="https://images.unsplash.com/photo-1627072554747-d1a89c836934?q=80&w=1932&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1F2937/D1D5DB?text=Mercedes+C-Class'" alt="Mercedes-Benz C-Class" class="w-full h-48 object-cover">
                             <div class="p-6 text-center">
-                                <h3 class="text-xl sm:text-2xl font-semibold mb-2 text-gray-100">Mercedes-Benz C-Class</h3>
+                                <h3 class="text-xl sm:text-2xl font-semibold mb-2 text-gray-900 dark:text-gray-100">Mercedes-Benz C-Class</h3>
                                 <p class="text-green-500 font-bold text-lg sm:text-xl mb-4">R$ 450.000</p>
                                 <button onclick="showDetails('mercedes_c_class')" class="w-full bg-green-500 text-gray-900 font-bold py-2 px-4 rounded-full transition-colors group-hover:bg-green-400">Ver Detalhes</button>
                             </div>
                         </div>
                         <!-- Cartão de Veículo 3 -->
-                        <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 group">
+                        <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 group">
                             <img src="https://images.unsplash.com/photo-1574765636306-382a3928e469?q=80&w=1932&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1F2937/D1D5DB?text=Porsche+911'" alt="Porsche 911" class="w-full h-48 object-cover">
                             <div class="p-6 text-center">
-                                <h3 class="text-xl sm:text-2xl font-semibold mb-2 text-gray-100">Porsche 911</h3>
+                                <h3 class="text-xl sm:text-2xl font-semibold mb-2 text-gray-900 dark:text-gray-100">Porsche 911</h3>
                                 <p class="text-green-500 font-bold text-lg sm:text-xl mb-4">R$ 1.200.000</p>
                                 <button onclick="showDetails('porsche_911')" class="w-full bg-green-500 text-gray-900 font-bold py-2 px-4 rounded-full transition-colors group-hover:bg-green-400">Ver Detalhes</button>
                             </div>
@@ -103,29 +134,29 @@
                     </div>
                     <!-- Botão para a página de estoque completa -->
                     <div class="text-center mt-12">
-                        <button onclick="showPage('stock')" class="inline-block bg-gray-700 text-gray-100 font-semibold py-3 px-8 rounded-full hover:bg-gray-600 transition-colors">Ver Todo o Estoque</button>
+                        <button onclick="showPage('stock')" class="inline-block bg-gray-300 dark:bg-gray-700 text-gray-900 dark:text-gray-100 font-semibold py-3 px-8 rounded-full hover:bg-gray-400 dark:hover:bg-gray-600 transition-colors">Ver Todo o Estoque</button>
                     </div>
                 </div>
             </section>
 
             <!-- Seção 'Por que nos Escolher' -->
-            <section id="sobre" class="py-16 sm:py-20 bg-gray-800 px-4">
-                <div class="container text-center">
-                    <h2 class="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 text-gray-100">Por que Escolher a Revenda Motors?</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 text-gray-300">
-                        <div class="flex flex-col items-center p-6 bg-gray-700 rounded-xl shadow-lg">
+            <section id="sobre" class="py-16 sm:py-20 bg-gray-200 dark:bg-gray-800 px-4 md:px-8 transition-colors duration-300">
+                <div class="container mx-auto text-center">
+                    <h2 class="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 text-gray-900 dark:text-gray-100">Por que Escolher a Revenda Motors?</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 text-gray-700 dark:text-gray-300">
+                        <div class="flex flex-col items-center p-6 bg-white dark:bg-gray-700 rounded-xl shadow-lg transition-colors duration-300">
                             <svg class="w-16 h-16 text-green-500 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            <h3 class="text-xl font-bold mb-2 text-gray-100">Qualidade Certificada</h3>
+                            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">Qualidade Certificada</h3>
                             <p>Cada veículo em nosso estoque passa por uma rigorosa inspeção de 100 pontos para garantir a qualidade.</p>
                         </div>
-                        <div class="flex flex-col items-center p-6 bg-gray-700 rounded-xl shadow-lg">
+                        <div class="flex flex-col items-center p-6 bg-white dark:bg-gray-700 rounded-xl shadow-lg transition-colors duration-300">
                             <svg class="w-16 h-16 text-green-500 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2-1.343-2-3-2zM4 12c0 2.21 2.91 4 6.5 4S17 14.21 17 12H4z"></path></svg>
-                            <h3 class="text-xl font-bold mb-2 text-gray-100">Financiamento Facilitado</h3>
+                            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">Financiamento Facilitado</h3>
                             <p>Trabalhamos com os principais bancos para oferecer as melhores taxas e condições de financiamento para você.</p>
                         </div>
-                        <div class="flex flex-col items-center p-6 bg-gray-700 rounded-xl shadow-lg">
+                        <div class="flex flex-col items-center p-6 bg-white dark:bg-gray-700 rounded-xl shadow-lg transition-colors duration-300">
                             <svg class="w-16 h-16 text-green-500 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h-4a2 2 0 01-2-2V4a2 2 0 012-2h4a2 2 0 012 2v14a2 2 0 01-2 2z"></path></svg>
-                            <h3 class="text-xl font-bold mb-2 text-gray-100">Atendimento de Excelência</h3>
+                            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">Atendimento de Excelência</h3>
                             <p>Nossa equipe de especialistas está pronta para ajudar em cada passo do processo de compra.</p>
                         </div>
                     </div>
@@ -133,19 +164,19 @@
             </section>
 
             <!-- Seção de Contato -->
-            <section id="contato" class="py-16 sm:py-20 bg-gray-900 px-4">
-                <div class="container text-center max-w-xl mx-auto">
-                    <h2 class="text-3xl sm:text-4xl font-bold mb-8 text-gray-100">Entre em Contato</h2>
-                    <p class="mb-8 text-gray-300">Preencha o formulário abaixo e um de nossos consultores entrará em contato com você.</p>
+            <section id="contato" class="py-16 sm:py-20 bg-gray-100 dark:bg-gray-900 px-4 md:px-8 transition-colors duration-300">
+                <div class="container mx-auto text-center max-w-xl">
+                    <h2 class="text-3xl sm:text-4xl font-bold mb-8 text-gray-900 dark:text-gray-100">Entre em Contato</h2>
+                    <p class="mb-8 text-gray-700 dark:text-gray-300">Preencha o formulário abaixo e um de nossos consultores entrará em contato com você.</p>
                     <form id="contact-form" class="space-y-6">
                         <div>
-                            <input type="text" id="name" name="name" placeholder="Seu Nome Completo" class="w-full p-4 bg-gray-800 rounded-lg border border-gray-700 focus:outline-none focus:border-green-500 transition-colors" required>
+                            <input type="text" id="name" name="name" placeholder="Seu Nome Completo" class="w-full p-4 bg-gray-200 dark:bg-gray-800 rounded-lg border border-gray-300 dark:border-gray-700 focus:outline-none focus:border-green-500 transition-colors" required>
                         </div>
                         <div>
-                            <input type="email" id="email" name="email" placeholder="Seu Melhor E-mail" class="w-full p-4 bg-gray-800 rounded-lg border border-gray-700 focus:outline-none focus:border-green-500 transition-colors" required>
+                            <input type="email" id="email" name="email" placeholder="Seu Melhor E-mail" class="w-full p-4 bg-gray-200 dark:bg-gray-800 rounded-lg border border-gray-300 dark:border-gray-700 focus:outline-none focus:border-green-500 transition-colors" required>
                         </div>
                         <div>
-                            <textarea id="message" name="message" rows="4" placeholder="Sua Mensagem ou Pergunta" class="w-full p-4 bg-gray-800 rounded-lg border border-gray-700 focus:outline-none focus:border-green-500 transition-colors" required></textarea>
+                            <textarea id="message" name="message" rows="4" placeholder="Sua Mensagem ou Pergunta" class="w-full p-4 bg-gray-200 dark:bg-gray-800 rounded-lg border border-gray-300 dark:border-gray-700 focus:outline-none focus:border-green-500 transition-colors" required></textarea>
                         </div>
                         <button type="submit" class="w-full bg-green-500 text-gray-900 font-bold py-4 rounded-lg shadow-lg hover:bg-green-400 transition-transform transform hover:scale-105">Enviar Mensagem</button>
                         <p id="form-message" class="mt-4 text-center hidden"></p>
@@ -156,61 +187,61 @@
 
         <!-- Conteúdo da Página de Estoque -->
         <div id="stock-page" class="page-section">
-            <main class="pt-24 pb-20 px-4">
-                <div class="container text-center">
-                    <h1 class="text-4xl sm:text-5xl font-extrabold mb-4 text-white">Nosso Estoque Completo</h1>
-                    <p class="text-base sm:text-lg text-gray-300 mb-12">Encontre o carro perfeito para você em nossa vasta seleção de veículos de alta qualidade.</p>
+            <main class="pt-24 pb-20 px-4 md:px-8">
+                <div class="container mx-auto text-center">
+                    <h1 class="text-4xl sm:text-5xl font-extrabold mb-4 text-gray-900 dark:text-white">Nosso Estoque Completo</h1>
+                    <p class="text-base sm:text-lg text-gray-700 dark:text-gray-300 mb-12">Encontre o carro perfeito para você em nossa vasta seleção de veículos de alta qualidade.</p>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
                         <!-- Cartão de Veículo 1 -->
-                        <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 group">
+                        <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 group">
                             <img src="https://images.unsplash.com/photo-1594951662706-6a4a761e01d6?q=80&w=1932&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1F2937/D1D5DB?text=Porsche+911'" alt="Porsche 911" class="w-full h-48 object-cover">
                             <div class="p-6 text-center">
-                                <h3 class="text-xl font-semibold mb-2 text-gray-100">Porsche 911</h3>
+                                <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">Porsche 911</h3>
                                 <p class="text-green-500 font-bold text-xl mb-4">R$ 1.200.000</p>
                                 <button onclick="showDetails('porsche_911')" class="w-full bg-green-500 text-gray-900 font-bold py-2 px-4 rounded-full transition-colors group-hover:bg-green-400">Ver Detalhes</button>
                             </div>
                         </div>
                         <!-- Cartão de Veículo 2 -->
-                        <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 group">
+                        <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 group">
                             <img src="https://images.unsplash.com/photo-1621289196309-8472535b91b5?q=80&w=2070&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1F2937/D1D5DB?text=Audi+R8'" alt="Audi R8" class="w-full h-48 object-cover">
                             <div class="p-6 text-center">
-                                <h3 class="text-xl font-semibold mb-2 text-gray-100">Audi R8</h3>
+                                <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">Audi R8</h3>
                                 <p class="text-green-500 font-bold text-xl mb-4">R$ 950.000</p>
                                 <button onclick="showDetails('audi_r8')" class="w-full bg-green-500 text-gray-900 font-bold py-2 px-4 rounded-full transition-colors group-hover:bg-green-400">Ver Detalhes</button>
                             </div>
                         </div>
                         <!-- Cartão de Veículo 3 -->
-                        <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 group">
+                        <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 group">
                             <img src="https://images.unsplash.com/photo-1627072554747-d1a89c836934?q=80&w=1932&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1F2937/D1D5DB?text=Mercedes+C-Class'" alt="Mercedes-Benz C-Class" class="w-full h-48 object-cover">
                             <div class="p-6 text-center">
-                                <h3 class="text-xl font-semibold mb-2 text-gray-100">Mercedes-Benz C-Class</h3>
+                                <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">Mercedes-Benz C-Class</h3>
                                 <p class="text-green-500 font-bold text-xl mb-4">R$ 450.000</p>
                                 <button onclick="showDetails('mercedes_c_class')" class="w-full bg-green-500 text-gray-900 font-bold py-2 px-4 rounded-full transition-colors group-hover:bg-green-400">Ver Detalhes</button>
                             </div>
                         </div>
                         <!-- Cartão de Veículo 4 -->
-                        <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 group">
+                        <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 group">
                             <img src="https://images.unsplash.com/photo-1517524008697-cd09a9640984?q=80&w=2070&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1F2937/D1D5DB?text=BMW+M5'" alt="BMW M5" class="w-full h-48 object-cover">
                             <div class="p-6 text-center">
-                                <h3 class="text-xl font-semibold mb-2 text-gray-100">BMW M5</h3>
+                                <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">BMW M5</h3>
                                 <p class="text-green-500 font-bold text-xl mb-4">R$ 650.000</p>
                                 <button onclick="showDetails('bmw_m5')" class="w-full bg-green-500 text-gray-900 font-bold py-2 px-4 rounded-full transition-colors group-hover:bg-green-400">Ver Detalhes</button>
                             </div>
                         </div>
                         <!-- Cartão de Veículo 5 -->
-                        <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 group">
+                        <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 group">
                             <img src="https://images.unsplash.com/photo-1549480104-54794e75a34a?q=80&w=2070&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1F2937/D1D5DB?text=Ferrari+488'" alt="Ferrari 488" class="w-full h-48 object-cover">
                             <div class="p-6 text-center">
-                                <h3 class="text-xl font-semibold mb-2 text-gray-100">Ferrari 488</h3>
+                                <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">Ferrari 488</h3>
                                 <p class="text-green-500 font-bold text-xl mb-4">R$ 2.500.000</p>
                                 <button onclick="showDetails('ferrari_488')" class="w-full bg-green-500 text-gray-900 font-bold py-2 px-4 rounded-full transition-colors group-hover:bg-green-400">Ver Detalhes</button>
                             </div>
                         </div>
                         <!-- Cartão de Veículo 6 -->
-                        <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 group">
+                        <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 group">
                             <img src="https://images.unsplash.com/photo-1627344955747-920f32194639?q=80&w=2070&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1F2937/D1D5DB?text=Lamborghini+Huracan'" alt="Lamborghini Huracán" class="w-full h-48 object-cover">
                             <div class="p-6 text-center">
-                                <h3 class="text-xl font-semibold mb-2 text-gray-100">Lamborghini Huracán</h3>
+                                <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">Lamborghini Huracán</h3>
                                 <p class="text-green-500 font-bold text-xl mb-4">R$ 3.100.000</p>
                                 <button onclick="showDetails('lamborghini_huracan')" class="w-full bg-green-500 text-gray-900 font-bold py-2 px-4 rounded-full transition-colors group-hover:bg-green-400">Ver Detalhes</button>
                             </div>
@@ -223,28 +254,270 @@
 
     <!-- Modal para Detalhes do Veículo -->
     <div id="details-modal" class="fixed inset-0 bg-black bg-opacity-70 z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-gray-800 p-8 rounded-xl shadow-2xl max-w-2xl w-full text-center relative">
+        <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-2xl max-w-sm sm:max-w-md md:max-w-2xl w-full text-center relative">
             <button onclick="closeDetailsModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-200 transition-colors focus:outline-none">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
-            <h3 id="modal-title" class="text-2xl font-bold mb-4 text-gray-100"></h3>
+            <h3 id="modal-title" class="text-2xl font-bold mb-4 text-gray-900 dark:text-gray-100"></h3>
             
             <!-- Carrossel de Imagens do Modal -->
-            <div id="modal-carousel-container" class="relative w-full overflow-hidden mb-6 rounded-lg aspect-w-16 aspect-h-9">
+            <div id="modal-carousel-container" class="relative w-full overflow-hidden mb-6 rounded-lg aspect-video">
                 <!-- O carrossel será injetado aqui -->
             </div>
 
-            <p class="text-gray-300 mb-6">Entre em contato para saber mais sobre este veículo!</p>
+            <p class="text-gray-700 dark:text-gray-300 mb-6 text-sm sm:text-base">Entre em contato para saber mais sobre este veículo!</p>
             <a href="#" onclick="showPage('home'); scrollToSection('contato'); closeDetailsModal();" class="inline-block bg-green-500 text-gray-900 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-green-400 transition-colors">Entrar em Contato</a>
         </div>
     </div>
- 
-     <!-- Rodapé -->
-    <footer class="py-10 bg-gray-800 text-center text-gray-400 text-sm">
-        <div class="container">
+
+    <!-- Rodapé -->
+    <footer class="py-6 md:py-10 bg-gray-200 dark:bg-gray-800 text-center text-gray-600 dark:text-gray-400 text-xs sm:text-sm transition-colors duration-300">
+        <div class="container mx-auto">
             <p>&copy; 2024 Revenda Motors. Todos os direitos reservados.</p>
         </div>
     </footer>
-    <script src="main.js"></script>
-    </body>
+
+    <script>
+        // Dados dos veículos com as imagens para o carrossel do modal
+        const vehicleData = {
+            'audi_r8': {
+                name: 'Audi R8',
+                images: [
+                    "https://images.unsplash.com/photo-1621289196309-8472535b91b5?q=80&w=2070&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1511994689255-b461113b2909?q=80&w=2070&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1555547432-84c6799516aa?q=80&w=2070&auto=format&fit=crop"
+                ]
+            },
+            'mercedes_c_class': {
+                name: 'Mercedes-Benz C-Class',
+                images: [
+                    "https://images.unsplash.com/photo-1627072554747-d1a89c836934?q=80&w=1932&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1582290647167-16017b8f0477?q=80&w=2070&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1584347712497-8c3461ce5854?q=80&w=1932&auto=format&fit=crop"
+                ]
+            },
+            'porsche_911': {
+                name: 'Porsche 911',
+                images: [
+                    "https://images.unsplash.com/photo-1574765636306-382a3928e469?q=80&w=1932&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1581093836338-79174668b812?q=80&w=1932&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1621532884633-9111867c4278?q=80&w=1932&auto=format&fit=crop"
+                ]
+            },
+            'bmw_m5': {
+                name: 'BMW M5',
+                images: [
+                    "https://images.unsplash.com/photo-1517524008697-cd09a9640984?q=80&w=2070&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1551670989-13ae532822a9?q=80&w=2070&auto=format&fit=crop"
+                ]
+            },
+            'ferrari_488': {
+                name: 'Ferrari 488',
+                images: [
+                    "https://images.unsplash.com/photo-1549480104-54794e75a34a?q=80&w=2070&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1542362567-20149022638a?q=80&w=2070&auto=format&fit=crop"
+                ]
+            },
+            'lamborghini_huracan': {
+                name: 'Lamborghini Huracán',
+                images: [
+                    "https://images.unsplash.com/photo-1627344955747-920f32194639?q=80&w=2070&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1542362567-20149022638a?q=80&w=2070&auto=format&fit=crop"
+                ]
+            }
+        };
+
+        // Lógica de navegação entre páginas e seções
+        function showPage(pageId) {
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(`${pageId}-page`).style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Lógica do menu móvel
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMenu = document.getElementById('close-menu');
+
+        function openMobileMenu() {
+            mobileMenu.classList.remove('hidden');
+            mobileMenu.classList.add('flex');
+            setTimeout(() => {
+                mobileMenu.classList.add('translate-x-0');
+            }, 10);
+        }
+        
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('translate-x-0');
+            setTimeout(() => {
+                mobileMenu.classList.remove('flex');
+                mobileMenu.classList.add('hidden');
+            }, 300);
+        }
+
+        menuToggle.addEventListener('click', openMobileMenu);
+        closeMenu.addEventListener('click', closeMobileMenu);
+
+        // Lida com o envio do formulário de contato
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formMessage = document.getElementById('form-message');
+            formMessage.textContent = 'Mensagem enviada com sucesso! Em breve entraremos em contato.';
+            formMessage.classList.remove('hidden', 'text-red-500');
+            formMessage.classList.add('text-green-500');
+            this.reset();
+        });
+
+        // Lógica do carrossel do banner principal
+        let heroCarouselInterval = null;
+        let heroCurrentSlide = 0;
+        const heroSlides = document.querySelectorAll('#hero-carousel .carousel-slide');
+
+        const showHeroSlide = (index) => {
+            heroSlides.forEach((slide, i) => {
+                slide.classList.remove('opacity-100');
+                slide.classList.add('opacity-0');
+                if (i === index) {
+                    slide.classList.remove('opacity-0');
+                    slide.classList.add('opacity-100');
+                }
+            });
+        };
+
+        const changeHeroSlide = (direction) => {
+            heroCurrentSlide = (heroCurrentSlide + direction + heroSlides.length) % heroSlides.length;
+            showHeroSlide(heroCurrentSlide);
+        };
+
+        const startHeroCarousel = () => {
+            if (heroCarouselInterval) clearInterval(heroCarouselInterval);
+            heroCarouselInterval = setInterval(() => changeHeroSlide(1), 5000);
+        };
+
+        // Adiciona a função global para os botões do HTML
+        window.changeSlide = changeHeroSlide;
+
+        window.onload = function() {
+            showHeroSlide(0);
+            if (heroSlides.length > 1) {
+                startHeroCarousel();
+            }
+            applyThemeFromLocalStorage();
+        };
+
+        // Lida com o modal de detalhes do veículo
+        const detailsModal = document.getElementById('details-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalCarouselContainer = document.getElementById('modal-carousel-container');
+        let modalCarouselInterval = null;
+
+        function showDetails(carKey) {
+            const car = vehicleData[carKey];
+            if (!car) return;
+
+            modalTitle.textContent = car.name;
+            setupModalCarousel(car.images);
+
+            detailsModal.classList.remove('hidden');
+            detailsModal.classList.add('flex');
+        }
+
+        function closeDetailsModal() {
+            detailsModal.classList.remove('flex');
+            detailsModal.classList.add('hidden');
+            // Limpa o carrossel do modal ao fechar
+            modalCarouselContainer.innerHTML = '';
+            // Limpa o intervalo do carrossel para evitar bugs
+            if (modalCarouselInterval) {
+                clearInterval(modalCarouselInterval);
+            }
+        }
+
+        // Lógica para configurar o carrossel do modal
+        function setupModalCarousel(images) {
+            modalCarouselContainer.innerHTML = ''; // Limpa o conteúdo anterior
+
+            let currentSlide = 0;
+
+            // Cria o div principal do carrossel
+            const carouselInner = document.createElement('div');
+            carouselInner.className = 'relative w-full h-full';
+            modalCarouselContainer.appendChild(carouselInner);
+
+            // Adiciona as imagens
+            images.forEach((src, index) => {
+                const slide = document.createElement('div');
+                slide.className = `carousel-slide w-full h-full absolute inset-0 transition-opacity duration-1000 ${index === 0 ? 'opacity-100' : 'opacity-0'}`;
+                slide.innerHTML = `<img src="${src}" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1F2937/D1D5DB?text=Imagem+indisponível'" alt="Imagem do veículo" class="w-full h-full object-cover rounded-lg">`;
+                carouselInner.appendChild(slide);
+            });
+
+            const slides = carouselInner.querySelectorAll('.carousel-slide');
+
+            // Função para mostrar o slide
+            const showSlide = (index) => {
+                slides.forEach((slide, i) => {
+                    slide.classList.remove('opacity-100');
+                    slide.classList.add('opacity-0');
+                    if (i === index) {
+                        slide.classList.remove('opacity-0');
+                        slide.classList.add('opacity-100');
+                    }
+                });
+            };
+
+            // Função para mudar o slide
+            const changeSlide = (direction) => {
+                currentSlide = (currentSlide + direction + slides.length) % slides.length;
+                showSlide(currentSlide);
+            };
+
+            // Adiciona botões de navegação se houver mais de uma imagem
+            if (images.length > 1) {
+                const prevButton = document.createElement('button');
+                prevButton.className = 'absolute left-4 top-1/2 -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full hover:bg-opacity-70 transition-colors z-20 focus:outline-none';
+                prevButton.innerHTML = `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>`;
+                prevButton.onclick = () => changeSlide(-1);
+                modalCarouselContainer.appendChild(prevButton);
+
+                const nextButton = document.createElement('button');
+                nextButton.className = 'absolute right-4 top-1/2 -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full hover:bg-opacity-70 transition-colors z-20 focus:outline-none';
+                nextButton.innerHTML = `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>`;
+                nextButton.onclick = () => changeSlide(1);
+                modalCarouselContainer.appendChild(nextButton);
+
+                // Autoplay
+                modalCarouselInterval = setInterval(() => {
+                    changeSlide(1);
+                }, 5000);
+            }
+        }
+
+        // Lógica de alternância de tema
+        const themeToggle = document.getElementById('theme-toggle');
+
+        function applyThemeFromLocalStorage() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const isDark = document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+    </script>
+</body>
 </html>
