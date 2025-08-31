@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acesso Multimarcas</title>
+    <title>Sua Revenda de Carros Premium</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -27,6 +27,14 @@
         .page-section {
             display: none;
         }
+        .spinner {
+            border-top-color: #3498db;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100 antialiased">
@@ -34,7 +42,14 @@
     <!-- Cabeçalho / Barra de Navegação -->
     <header class="py-4 fixed top-0 left-0 w-full z-50 bg-white bg-opacity-80 dark:bg-black dark:bg-opacity-70 backdrop-blur-md transition-colors duration-300">
         <div class="container mx-auto flex justify-between items-center px-4 md:px-8">
-            <a href="#" class="text-2xl sm:text-3xl font-bold text-green-500 tracking-wide">Acesso Multimarcas</a>
+            <a href="#" class="flex items-center space-x-2 sm:space-x-4">
+                <!-- Ícone de Logo Placeholder -->
+                <svg class="w-8 h-8 sm:w-10 sm:h-10 text-green-500" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12 20.25a8.25 8.25 0 100-16.5 8.25 8.25 0 000 16.5z"/>
+                    <path d="M12 6a6 6 0 100 12 6 6 0 000-12zM12 16.5a4.5 4.5 0 100-9 4.5 4.5 0 000 9z"/>
+                </svg>
+                <span class="text-2xl sm:text-3xl font-bold text-green-500 tracking-wide">Revenda Motors</span>
+            </a>
             <!-- Menu de Navegação para Desktop -->
             <nav class="hidden md:flex space-x-4 lg:space-x-8 text-sm font-semibold">
                 <a href="#" onclick="showPage('home')" class="hover:text-green-500 transition-colors">Veículos</a>
@@ -61,8 +76,8 @@
         <button id="close-menu" class="absolute top-6 right-6 text-gray-900 dark:text-gray-100 focus:outline-none">
             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
         </button>
-        <a href="#" onclick="showPage('home'); closeMobileMenu('Veículos');" class="hover:text-green-500 transition-colors">Veículos</a>
-        <a href="#" onclick="showPage('homes'); scrollToSection('sobre'); closeMobileMenu();" class="hover:text-green-500 transition-colors">Sobre Nós</a>
+        <a href="#" onclick="showPage('home'); closeMobileMenu();" class="hover:text-green-500 transition-colors">Veículos</a>
+        <a href="#" onclick="showPage('home'); scrollToSection('sobre'); closeMobileMenu();" class="hover:text-green-500 transition-colors">Sobre Nós</a>
         <a href="#" onclick="showPage('home'); scrollToSection('contato'); closeMobileMenu();" class="hover:text-green-500 transition-colors">Contato</a>
     </div>
 
@@ -73,13 +88,13 @@
             <section class="relative h-screen flex items-center justify-center overflow-hidden bg-pattern px-4 py-24">
                 <div id="hero-carousel" class="absolute inset-0 z-0">
                     <div class="carousel-slide w-full h-full absolute inset-0 transition-opacity duration-1000 opacity-0">
-                        <img src="images/carro-na-estrada.jpg" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/0A0A0A/E0E0E0?text=Carro+Premium+1'" alt="Imagem de carro de luxo" class="w-full h-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1620701196414-b6dd01db671a?q=80&w=2070&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/0A0A0A/E0E0E0?text=Carro+Premium+1'" alt="Imagem de carro de luxo" class="w-full h-full object-cover">
                     </div>
                     <div class="carousel-slide w-full h-full absolute inset-0 transition-opacity duration-1000 opacity-0">
-                        <img src="images/carros-na estrada-2.jpg" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/0A0A0A/E0E0E0?text=Carro+Premium+2'" alt="Imagem de carro de luxo 2" class="w-full h-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1542362567-20149022638a?q=80&w=2070&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/0A0A0A/E0E0E0?text=Carro+Premium+2'" alt="Imagem de carro de luxo 2" class="w-full h-full object-cover">
                     </div>
                     <div class="carousel-slide w-full h-full absolute inset-0 transition-opacity duration-1000 opacity-0">
-                        <img src="images/carros-na-estrada-3.jpg" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/0A0A0A/E0E0E0?text=Carro+Premium+3'" alt="Imagem de carro de luxo 3" class="w-full h-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1575218822074-d4b1a4325a7a?q=80&w=2070&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/0A0A0A/E0E0E0?text=Carro+Premium+3'" alt="Imagem de carro de luxo 3" class="w-full h-full object-cover">
                     </div>
                     <div class="absolute inset-0 bg-black opacity-60"></div>
                 
@@ -142,7 +157,7 @@
             <!-- Seção 'Por que nos Escolher' -->
             <section id="sobre" class="py-16 sm:py-20 bg-gray-200 dark:bg-gray-800 px-4 md:px-8 transition-colors duration-300">
                 <div class="container mx-auto text-center">
-                    <h2 class="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 text-gray-900 dark:text-gray-100">Por que Escolher a Acesso Multimarcas?</h2>
+                    <h2 class="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 text-gray-900 dark:text-gray-100">Por que Escolher a Revenda Motors?</h2>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 text-gray-700 dark:text-gray-300">
                         <div class="flex flex-col items-center p-6 bg-white dark:bg-gray-700 rounded-xl shadow-lg transition-colors duration-300">
                             <svg class="w-16 h-16 text-green-500 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -246,24 +261,6 @@
                                 <button onclick="showDetails('lamborghini_huracan')" class="w-full bg-green-500 text-gray-900 font-bold py-2 px-4 rounded-full transition-colors group-hover:bg-green-400">Ver Detalhes</button>
                             </div>
                         </div>
-                        <!-- Cartão de Veículo 7 -->
-                        <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 group">
-                            <img src="https://images.unsplash.com/photo-1627344955747-920f32194639?q=80&w=2070&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1F2937/D1D5DB?text=Lamborghini+Huracan'" alt="Lamborghini Huracán" class="w-full h-48 object-cover">
-                            <div class="p-6 text-center">
-                                <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">Lamborghini Huracán</h3>
-                                <p class="text-green-500 font-bold text-xl mb-4">R$ 3.100.000</p>
-                                <button onclick="showDetails('lamborghini_huracan')" class="w-full bg-green-500 text-gray-900 font-bold py-2 px-4 rounded-full transition-colors group-hover:bg-green-400">Ver Detalhes</button>
-                            </div>
-                        </div>
-                        <!-- Cartão de Veículo 8 -->
-                        <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 group">
-                            <img src="https://images.unsplash.com/photo-1627344955747-920f32194639?q=80&w=2070&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1F2937/D1D5DB?text=Lamborghini+Huracan'" alt="Lamborghini Huracán" class="w-full h-48 object-cover">
-                            <div class="p-6 text-center">
-                                <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">Lamborghini Huracán</h3>
-                                <p class="text-green-500 font-bold text-xl mb-4">R$ 3.100.000</p>
-                                <button onclick="showDetails('lamborghini_huracan')" class="w-full bg-green-500 text-gray-900 font-bold py-2 px-4 rounded-full transition-colors group-hover:bg-green-400">Ver Detalhes</button>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </main>
@@ -283,7 +280,11 @@
                 <!-- O carrossel será injetado aqui -->
             </div>
 
-            <p class="text-gray-700 dark:text-gray-300 mb-6 text-sm sm:text-base">Entre em contato para saber mais sobre este veículo!</p>
+            <div id="modal-description" class="text-left text-sm text-gray-700 dark:text-gray-300 mt-4 leading-relaxed">
+                <!-- A descrição do carro será inserida aqui -->
+            </div>
+
+            <p class="text-gray-700 dark:text-gray-300 mt-6 text-sm sm:text-base">Entre em contato para saber mais sobre este veículo!</p>
             <a href="#" onclick="showPage('home'); scrollToSection('contato'); closeDetailsModal();" class="inline-block bg-green-500 text-gray-900 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-green-400 transition-colors">Entrar em Contato</a>
         </div>
     </div>
@@ -291,12 +292,12 @@
     <!-- Rodapé -->
     <footer class="py-6 md:py-10 bg-gray-200 dark:bg-gray-800 text-center text-gray-600 dark:text-gray-400 text-xs sm:text-sm transition-colors duration-300">
         <div class="container mx-auto">
-            <p>&copy; 2025 Acesso Multimarcas. Todos os direitos reservados.</p>
+            <p>&copy; 2024 Revenda Motors. Todos os direitos reservados.</p>
         </div>
     </footer>
 
     <script>
-        // Dados dos veículos com as imagens para o carrossel do modal
+        // Dados dos veículos com as imagens para o carrossel do modal e a descrição pré-escrita
         const vehicleData = {
             'audi_r8': {
                 name: 'Audi R8',
@@ -304,7 +305,8 @@
                     "https://images.unsplash.com/photo-1621289196309-8472535b91b5?q=80&w=2070&auto=format&fit=crop",
                     "https://images.unsplash.com/photo-1511994689255-b461113b2909?q=80&w=2070&auto=format&fit=crop",
                     "https://images.unsplash.com/photo-1555547432-84c6799516aa?q=80&w=2070&auto=format&fit=crop"
-                ]
+                ],
+                description: 'O Audi R8 é um ícone de engenharia alemã, conhecido pelo seu design futurista e pelo desempenho do motor V10. Uma máquina que combina luxo, velocidade e tecnologia de ponta para uma experiência de condução inigualável.'
             },
             'mercedes_c_class': {
                 name: 'Mercedes-Benz C-Class',
@@ -312,7 +314,8 @@
                     "https://images.unsplash.com/photo-1627072554747-d1a89c836934?q=80&w=1932&auto=format&fit=crop",
                     "https://images.unsplash.com/photo-1582290647167-16017b8f0477?q=80&w=2070&auto=format&fit=crop",
                     "https://images.unsplash.com/photo-1584347712497-8c3461ce5854?q=80&w=1932&auto=format&fit=crop"
-                ]
+                ],
+                description: 'A Classe C da Mercedes-Benz oferece o equilíbrio perfeito entre elegância e modernidade. Com um interior sofisticado e tecnologia de ponta, este sedan proporciona uma viagem confortável e segura, ideal para quem valoriza o requinte.'
             },
             'porsche_911': {
                 name: 'Porsche 911',
@@ -320,28 +323,32 @@
                     "https://images.unsplash.com/photo-1574765636306-382a3928e469?q=80&w=1932&auto=format&fit=crop",
                     "https://images.unsplash.com/photo-1581093836338-79174668b812?q=80&w=1932&auto=format&fit=crop",
                     "https://images.unsplash.com/photo-1621532884633-9111867c4278?q=80&w=1932&auto=format&fit=crop"
-                ]
+                ],
+                description: 'O Porsche 911 é um verdadeiro ícone de design e performance. A sua forma intemporal e a engenharia de precisão garantem uma experiência de condução emocionante e única, digna do seu legado lendário.'
             },
             'bmw_m5': {
                 name: 'BMW M5',
                 images: [
                     "https://images.unsplash.com/photo-1517524008697-cd09a9640984?q=80&w=2070&auto=format&fit=crop",
                     "https://images.unsplash.com/photo-1551670989-13ae532822a9?q=80&w=2070&auto=format&fit=crop"
-                ]
+                ],
+                description: 'O BMW M5 é a personificação da elegância e da potência. Combina a sofisticação de um sedan de luxo com a performance brutal de um carro desportivo, oferecendo uma dinâmica de condução inigualável.'
             },
             'ferrari_488': {
                 name: 'Ferrari 488',
                 images: [
                     "https://images.unsplash.com/photo-1549480104-54794e75a34a?q=80&w=2070&auto=format&fit=crop",
                     "https://images.unsplash.com/photo-1542362567-20149022638a?q=80&w=2070&auto=format&fit=crop"
-                ]
+                ],
+                description: 'A Ferrari 488 é uma obra de arte da engenharia italiana, projetada para a máxima emoção na estrada e na pista. O seu design aerodinâmico e o motor V8 turbo criam uma sinfonia de velocidade e precisão que cativa todos os sentidos.'
             },
             'lamborghini_huracan': {
                 name: 'Lamborghini Huracán',
                 images: [
                     "https://images.unsplash.com/photo-1627344955747-920f32194639?q=80&w=2070&auto=format&fit=crop",
                     "https://images.unsplash.com/photo-1542362567-20149022638a?q=80&w=2070&auto=format&fit=crop"
-                ]
+                ],
+                description: 'O Lamborghini Huracán não é apenas um carro, é uma declaração. Com as suas linhas agressivas e motor aspirado, ele oferece uma experiência de condução visceral e uma presença imponente que o distingue em qualquer lugar.'
             }
         };
 
@@ -436,14 +443,19 @@
         const detailsModal = document.getElementById('details-modal');
         const modalTitle = document.getElementById('modal-title');
         const modalCarouselContainer = document.getElementById('modal-carousel-container');
+        const modalDescription = document.getElementById('modal-description');
+        let currentCarKey = null;
+
         let modalCarouselInterval = null;
 
         function showDetails(carKey) {
             const car = vehicleData[carKey];
             if (!car) return;
 
+            currentCarKey = carKey;
             modalTitle.textContent = car.name;
             setupModalCarousel(car.images);
+            modalDescription.textContent = car.description; // Define a descrição a partir dos dados do carro
 
             detailsModal.classList.remove('hidden');
             detailsModal.classList.add('flex');
