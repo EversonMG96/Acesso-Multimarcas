@@ -220,5 +220,30 @@
             </main>
         </div>
     </main>
+
+    <!-- Modal para Detalhes do Veículo -->
+    <div id="details-modal" class="fixed inset-0 bg-black bg-opacity-70 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-gray-800 p-8 rounded-xl shadow-2xl max-w-2xl w-full text-center relative">
+            <button onclick="closeDetailsModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-200 transition-colors focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <h3 id="modal-title" class="text-2xl font-bold mb-4 text-gray-100"></h3>
+            
+            <!-- Carrossel de Imagens do Modal -->
+            <div id="modal-carousel-container" class="relative w-full overflow-hidden mb-6 rounded-lg aspect-w-16 aspect-h-9">
+                <!-- O carrossel será injetado aqui -->
+            </div>
+
+            <p class="text-gray-300 mb-6">Entre em contato para saber mais sobre este veículo!</p>
+            <a href="#" onclick="showPage('home'); scrollToSection('contato'); closeDetailsModal();" class="inline-block bg-green-500 text-gray-900 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-green-400 transition-colors">Entrar em Contato</a>
+        </div>
+    </div>
+ 
+     <!-- Rodapé -->
+    <footer class="py-10 bg-gray-800 text-center text-gray-400 text-sm">
+        <div class="container">
+            <p>&copy; 2024 Revenda Motors. Todos os direitos reservados.</p>
+        </div>
+    </footer>
     </body>
 </html>
