@@ -34,5 +34,191 @@
         <a href="#" onclick="showPage('home'); scrollToSection('sobre'); closeMobileMenu();" class="hover:text-green-500 transition-colors">Sobre Nós</a>
         <a href="#" onclick="showPage('home'); scrollToSection('contato'); closeMobileMenu();" class="hover:text-green-500 transition-colors">Contato</a>
     </div>
+
+    <main>
+        <!-- Conteúdo da Página Inicial -->
+        <div id="home-page" class="page-section" style="display: block;">
+            <!-- Seção de Destaque com Carrossel -->
+            <section class="relative h-screen flex items-center justify-center overflow-hidden bg-pattern px-4">
+                <div id="hero-carousel" class="absolute inset-0 z-0">
+                    <div class="carousel-slide w-full h-full absolute inset-0 transition-opacity duration-1000 opacity-0">
+                        <img src="https://images.unsplash.com/photo-1620701196414-b6dd01db671a?q=80&w=2070&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/0A0A0A/E0E0E0?text=Carro+Premium+1'" alt="Imagem de carro de luxo" class="w-full h-full object-cover">
+                    </div>
+                    <div class="carousel-slide w-full h-full absolute inset-0 transition-opacity duration-1000 opacity-0">
+                        <img src="https://images.unsplash.com/photo-1542362567-20149022638a?q=80&w=2070&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/0A0A0A/E0E0E0?text=Carro+Premium+2'" alt="Imagem de carro de luxo 2" class="w-full h-full object-cover">
+                    </div>
+                    <div class="carousel-slide w-full h-full absolute inset-0 transition-opacity duration-1000 opacity-0">
+                        <img src="https://images.unsplash.com/photo-1575218822074-d4b1a4325a7a?q=80&w=2070&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/0A0A0A/E0E0E0?text=Carro+Premium+3'" alt="Imagem de carro de luxo 3" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute inset-0 bg-black opacity-60"></div>
+
+                    <!-- Botões de Navegação do Carrossel -->
+                    <button class="absolute left-4 top-1/2 -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full hover:bg-opacity-70 transition-colors z-20" onclick="changeSlide('hero-carousel', -1)">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+                    <button class="absolute right-4 top-1/2 -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full hover:bg-opacity-70 transition-colors z-20" onclick="changeSlide('hero-carousel', 1)">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                </div>
+                
+                <div class="relative z-10 text-center max-w-2xl">
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-4 text-white">Sua Jornada Começa Aqui</h1>
+                    <p class="text-base sm:text-lg text-gray-300 mb-8">Encontre o veículo perfeito para você, combinando luxo, tecnologia e a performance que você sempre quis.</p>
+                    <a href="#" onclick="scrollToSection('veiculos')" class="inline-block bg-green-500 text-gray-900 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-green-400 transition-transform transform hover:scale-105">Ver Veículos</a>
+                </div>
+            </section>
+
+            <!-- Seção de Veículos em Destaque -->
+            <section id="veiculos" class="py-16 sm:py-20 bg-gray-900 px-4">
+                <div class="container">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 text-gray-100">Veículos em Destaque</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                        <!-- Cartão de Veículo 1 -->
+                        <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 group">
+                            <img src="https://images.unsplash.com/photo-1621289196309-8472535b91b5?q=80&w=2070&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1F2937/D1D5DB?text=Audi+R8'" alt="Audi R8" class="w-full h-48 object-cover">
+                            <div class="p-6 text-center">
+                                <h3 class="text-xl sm:text-2xl font-semibold mb-2 text-gray-100">Audi R8</h3>
+                                <p class="text-green-500 font-bold text-lg sm:text-xl mb-4">R$ 950.000</p>
+                                <button onclick="showDetails('audi_r8')" class="w-full bg-green-500 text-gray-900 font-bold py-2 px-4 rounded-full transition-colors group-hover:bg-green-400">Ver Detalhes</button>
+                            </div>
+                        </div>
+                        <!-- Cartão de Veículo 2 -->
+                        <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 group">
+                            <img src="https://images.unsplash.com/photo-1627072554747-d1a89c836934?q=80&w=1932&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1F2937/D1D5DB?text=Mercedes+C-Class'" alt="Mercedes-Benz C-Class" class="w-full h-48 object-cover">
+                            <div class="p-6 text-center">
+                                <h3 class="text-xl sm:text-2xl font-semibold mb-2 text-gray-100">Mercedes-Benz C-Class</h3>
+                                <p class="text-green-500 font-bold text-lg sm:text-xl mb-4">R$ 450.000</p>
+                                <button onclick="showDetails('mercedes_c_class')" class="w-full bg-green-500 text-gray-900 font-bold py-2 px-4 rounded-full transition-colors group-hover:bg-green-400">Ver Detalhes</button>
+                            </div>
+                        </div>
+                        <!-- Cartão de Veículo 3 -->
+                        <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 group">
+                            <img src="https://images.unsplash.com/photo-1574765636306-382a3928e469?q=80&w=1932&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1F2937/D1D5DB?text=Porsche+911'" alt="Porsche 911" class="w-full h-48 object-cover">
+                            <div class="p-6 text-center">
+                                <h3 class="text-xl sm:text-2xl font-semibold mb-2 text-gray-100">Porsche 911</h3>
+                                <p class="text-green-500 font-bold text-lg sm:text-xl mb-4">R$ 1.200.000</p>
+                                <button onclick="showDetails('porsche_911')" class="w-full bg-green-500 text-gray-900 font-bold py-2 px-4 rounded-full transition-colors group-hover:bg-green-400">Ver Detalhes</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Botão para a página de estoque completa -->
+                    <div class="text-center mt-12">
+                        <button onclick="showPage('stock')" class="inline-block bg-gray-700 text-gray-100 font-semibold py-3 px-8 rounded-full hover:bg-gray-600 transition-colors">Ver Todo o Estoque</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção 'Por que nos Escolher' -->
+            <section id="sobre" class="py-16 sm:py-20 bg-gray-800 px-4">
+                <div class="container text-center">
+                    <h2 class="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 text-gray-100">Por que Escolher a Revenda Motors?</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 text-gray-300">
+                        <div class="flex flex-col items-center p-6 bg-gray-700 rounded-xl shadow-lg">
+                            <svg class="w-16 h-16 text-green-500 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <h3 class="text-xl font-bold mb-2 text-gray-100">Qualidade Certificada</h3>
+                            <p>Cada veículo em nosso estoque passa por uma rigorosa inspeção de 100 pontos para garantir a qualidade.</p>
+                        </div>
+                        <div class="flex flex-col items-center p-6 bg-gray-700 rounded-xl shadow-lg">
+                            <svg class="w-16 h-16 text-green-500 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2-1.343-2-3-2zM4 12c0 2.21 2.91 4 6.5 4S17 14.21 17 12H4z"></path></svg>
+                            <h3 class="text-xl font-bold mb-2 text-gray-100">Financiamento Facilitado</h3>
+                            <p>Trabalhamos com os principais bancos para oferecer as melhores taxas e condições de financiamento para você.</p>
+                        </div>
+                        <div class="flex flex-col items-center p-6 bg-gray-700 rounded-xl shadow-lg">
+                            <svg class="w-16 h-16 text-green-500 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h-4a2 2 0 01-2-2V4a2 2 0 012-2h4a2 2 0 012 2v14a2 2 0 01-2 2z"></path></svg>
+                            <h3 class="text-xl font-bold mb-2 text-gray-100">Atendimento de Excelência</h3>
+                            <p>Nossa equipe de especialistas está pronta para ajudar em cada passo do processo de compra.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção de Contato -->
+            <section id="contato" class="py-16 sm:py-20 bg-gray-900 px-4">
+                <div class="container text-center max-w-xl mx-auto">
+                    <h2 class="text-3xl sm:text-4xl font-bold mb-8 text-gray-100">Entre em Contato</h2>
+                    <p class="mb-8 text-gray-300">Preencha o formulário abaixo e um de nossos consultores entrará em contato com você.</p>
+                    <form id="contact-form" class="space-y-6">
+                        <div>
+                            <input type="text" id="name" name="name" placeholder="Seu Nome Completo" class="w-full p-4 bg-gray-800 rounded-lg border border-gray-700 focus:outline-none focus:border-green-500 transition-colors" required>
+                        </div>
+                        <div>
+                            <input type="email" id="email" name="email" placeholder="Seu Melhor E-mail" class="w-full p-4 bg-gray-800 rounded-lg border border-gray-700 focus:outline-none focus:border-green-500 transition-colors" required>
+                        </div>
+                        <div>
+                            <textarea id="message" name="message" rows="4" placeholder="Sua Mensagem ou Pergunta" class="w-full p-4 bg-gray-800 rounded-lg border border-gray-700 focus:outline-none focus:border-green-500 transition-colors" required></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-green-500 text-gray-900 font-bold py-4 rounded-lg shadow-lg hover:bg-green-400 transition-transform transform hover:scale-105">Enviar Mensagem</button>
+                        <p id="form-message" class="mt-4 text-center hidden"></p>
+                    </form>
+                </div>
+            </section>
+        </div>
+
+        <!-- Conteúdo da Página de Estoque -->
+        <div id="stock-page" class="page-section">
+            <main class="pt-24 pb-20 px-4">
+                <div class="container text-center">
+                    <h1 class="text-4xl sm:text-5xl font-extrabold mb-4 text-white">Nosso Estoque Completo</h1>
+                    <p class="text-base sm:text-lg text-gray-300 mb-12">Encontre o carro perfeito para você em nossa vasta seleção de veículos de alta qualidade.</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
+                        <!-- Cartão de Veículo 1 -->
+                        <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 group">
+                            <img src="https://images.unsplash.com/photo-1594951662706-6a4a761e01d6?q=80&w=1932&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1F2937/D1D5DB?text=Porsche+911'" alt="Porsche 911" class="w-full h-48 object-cover">
+                            <div class="p-6 text-center">
+                                <h3 class="text-xl font-semibold mb-2 text-gray-100">Porsche 911</h3>
+                                <p class="text-green-500 font-bold text-xl mb-4">R$ 1.200.000</p>
+                                <button onclick="showDetails('porsche_911')" class="w-full bg-green-500 text-gray-900 font-bold py-2 px-4 rounded-full transition-colors group-hover:bg-green-400">Ver Detalhes</button>
+                            </div>
+                        </div>
+                        <!-- Cartão de Veículo 2 -->
+                        <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 group">
+                            <img src="https://images.unsplash.com/photo-1621289196309-8472535b91b5?q=80&w=2070&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1F2937/D1D5DB?text=Audi+R8'" alt="Audi R8" class="w-full h-48 object-cover">
+                            <div class="p-6 text-center">
+                                <h3 class="text-xl font-semibold mb-2 text-gray-100">Audi R8</h3>
+                                <p class="text-green-500 font-bold text-xl mb-4">R$ 950.000</p>
+                                <button onclick="showDetails('audi_r8')" class="w-full bg-green-500 text-gray-900 font-bold py-2 px-4 rounded-full transition-colors group-hover:bg-green-400">Ver Detalhes</button>
+                            </div>
+                        </div>
+                        <!-- Cartão de Veículo 3 -->
+                        <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 group">
+                            <img src="https://images.unsplash.com/photo-1627072554747-d1a89c836934?q=80&w=1932&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1F2937/D1D5DB?text=Mercedes+C-Class'" alt="Mercedes-Benz C-Class" class="w-full h-48 object-cover">
+                            <div class="p-6 text-center">
+                                <h3 class="text-xl font-semibold mb-2 text-gray-100">Mercedes-Benz C-Class</h3>
+                                <p class="text-green-500 font-bold text-xl mb-4">R$ 450.000</p>
+                                <button onclick="showDetails('mercedes_c_class')" class="w-full bg-green-500 text-gray-900 font-bold py-2 px-4 rounded-full transition-colors group-hover:bg-green-400">Ver Detalhes</button>
+                            </div>
+                        </div>
+                        <!-- Cartão de Veículo 4 -->
+                        <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 group">
+                            <img src="https://images.unsplash.com/photo-1517524008697-cd09a9640984?q=80&w=2070&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1F2937/D1D5DB?text=BMW+M5'" alt="BMW M5" class="w-full h-48 object-cover">
+                            <div class="p-6 text-center">
+                                <h3 class="text-xl font-semibold mb-2 text-gray-100">BMW M5</h3>
+                                <p class="text-green-500 font-bold text-xl mb-4">R$ 650.000</p>
+                                <button onclick="showDetails('bmw_m5')" class="w-full bg-green-500 text-gray-900 font-bold py-2 px-4 rounded-full transition-colors group-hover:bg-green-400">Ver Detalhes</button>
+                            </div>
+                        </div>
+                        <!-- Cartão de Veículo 5 -->
+                        <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 group">
+                            <img src="https://images.unsplash.com/photo-1549480104-54794e75a34a?q=80&w=2070&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1F2937/D1D5DB?text=Ferrari+488'" alt="Ferrari 488" class="w-full h-48 object-cover">
+                            <div class="p-6 text-center">
+                                <h3 class="text-xl font-semibold mb-2 text-gray-100">Ferrari 488</h3>
+                                <p class="text-green-500 font-bold text-xl mb-4">R$ 2.500.000</p>
+                                <button onclick="showDetails('ferrari_488')" class="w-full bg-green-500 text-gray-900 font-bold py-2 px-4 rounded-full transition-colors group-hover:bg-green-400">Ver Detalhes</button>
+                            </div>
+                        </div>
+                        <!-- Cartão de Veículo 6 -->
+                        <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 group">
+                            <img src="https://images.unsplash.com/photo-1627344955747-920f32194639?q=80&w=2070&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1F2937/D1D5DB?text=Lamborghini+Huracan'" alt="Lamborghini Huracán" class="w-full h-48 object-cover">
+                            <div class="p-6 text-center">
+                                <h3 class="text-xl font-semibold mb-2 text-gray-100">Lamborghini Huracán</h3>
+                                <p class="text-green-500 font-bold text-xl mb-4">R$ 3.100.000</p>
+                                <button onclick="showDetails('lamborghini_huracan')" class="w-full bg-green-500 text-gray-900 font-bold py-2 px-4 rounded-full transition-colors group-hover:bg-green-400">Ver Detalhes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </main>
     </body>
 </html>
