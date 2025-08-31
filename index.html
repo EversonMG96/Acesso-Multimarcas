@@ -10,7 +10,19 @@
     <body class="bg-gray-900 text-gray-100 antialiased">
         <!-- cabeçalho / barra de navegação -->
         <header class="py-6 fixed top-0 left-0 w-full z-50 bg-black bg-opacity-70 backdrop-blur-md">
-            
+            <div class="container flex justify-between items-center px-4">
+            <a href="#" class="text-2xl sm:text-3xl font-bold text-green-500 tracking-wide">Acesso Multimarcas</a>
+            <!-- Menu de Navegação para Desktop -->
+            <nav class="hidden md:flex space-x-4 lg:space-x-8 text-sm font-semibold">
+                <a href="#" onclick="showPage('home')" class="hover:text-green-500 transition-colors">Veículos</a>
+                <a href="#" onclick="showPage('home'); scrollToSection('sobre')" class="hover:text-green-500 transition-colors">Sobre Nós</a>
+                <a href="#" onclick="showPage('home'); scrollToSection('contato')" class="hover:text-green-500 transition-colors">Contato</a>
+            </nav>
+            <!-- Botão do Menu para Celular -->
+            <button id="menu-toggle" class="md:hidden text-gray-100 focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
         </header>
     </body>
 </html>
