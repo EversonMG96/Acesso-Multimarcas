@@ -24,5 +24,15 @@
             </button>
         </div>
         </header>
+
+        <!-- menu mobile -->
+          <div id="mobile-menu" class="fixed top-0 left-0 h-full w-full bg-black bg-opacity-90 z-40 hidden flex-col items-center justify-center space-y-8 text-xl transition-transform transform -translate-x-full">
+        <button id="close-menu" class="absolute top-6 right-6 text-gray-100 focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        <a href="#" onclick="showPage('home'); closeMobileMenu();" class="hover:text-green-500 transition-colors">Veículos</a>
+        <a href="#" onclick="showPage('home'); scrollToSection('sobre'); closeMobileMenu();" class="hover:text-green-500 transition-colors">Sobre Nós</a>
+        <a href="#" onclick="showPage('home'); scrollToSection('contato'); closeMobileMenu();" class="hover:text-green-500 transition-colors">Contato</a>
+    </div>
     </body>
 </html>
