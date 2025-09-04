@@ -88,21 +88,21 @@
             <section class="relative h-screen flex items-center justify-center overflow-hidden bg-pattern px-4 py-24">
                 <div id="hero-carousel" class="absolute inset-0 z-0">
                     <div class="carousel-slide w-full h-full absolute inset-0 transition-opacity duration-1000 opacity-0">
-                        <img src="images/carro-na-estrada.jpg" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/0A0A0A/E0E0E0?text=Carro+Premium+1'" alt="Imagem de carro de luxo" class="w-full h-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1620701196414-b6dd01db671a?q=80&w=2070&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/0A0A0A/E0E0E0?text=Carro+Premium+1'" alt="Imagem de carro de luxo" class="w-full h-full object-cover">
                     </div>
                     <div class="carousel-slide w-full h-full absolute inset-0 transition-opacity duration-1000 opacity-0">
-                        <img src="images/carros-na estrada-2.jpg" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/0A0A0A/E0E0E0?text=Carro+Premium+2'" alt="Imagem de carro de luxo 2" class="w-full h-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1542362567-20149022638a?q=80&w=2070&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/0A0A0A/E0E0E0?text=Carro+Premium+2'" alt="Imagem de carro de luxo 2" class="w-full h-full object-cover">
                     </div>
                     <div class="carousel-slide w-full h-full absolute inset-0 transition-opacity duration-1000 opacity-0">
-                        <img src="images/carros-na-estrada-3.jpg" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/0A0A0A/E0E0E0?text=Carro+Premium+3'" alt="Imagem de carro de luxo 3" class="w-full h-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1575218822074-d4b1a4325a7a?q=80&w=2070&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/0A0A0A/E0E0E0?text=Carro+Premium+3'" alt="Imagem de carro de luxo 3" class="w-full h-full object-cover">
                     </div>
                     <div class="absolute inset-0 bg-black opacity-60"></div>
                 
                     <!-- Botões de Navegação do Carrossel -->
-                    <button class="absolute left-4 top-1/2 -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full hover:bg-opacity-70 transition-colors z-20" onclick="changeSlide('hero-carousel', -1)">
+                    <button class="absolute left-4 top-1/2 -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full hover:bg-opacity-70 transition-colors z-20" onclick="changeHeroSlide(-1)">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
                     </button>
-                    <button class="absolute right-4 top-1/2 -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full hover:bg-opacity-70 transition-colors z-20" onclick="changeSlide('hero-carousel', 1)">
+                    <button class="absolute right-4 top-1/2 -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full hover:bg-opacity-70 transition-colors z-20" onclick="changeHeroSlide(1)">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                     </button>
                 </div>
@@ -292,7 +292,7 @@
     <!-- Rodapé -->
     <footer class="py-6 md:py-10 bg-gray-200 dark:bg-gray-800 text-center text-gray-600 dark:text-gray-400 text-xs sm:text-sm transition-colors duration-300">
         <div class="container mx-auto">
-            <p>&copy; 2025 Revenda Motors. Todos os direitos reservados.</p>
+            <p>&copy; 2024 Revenda Motors. Todos os direitos reservados.</p>
         </div>
     </footer>
 
@@ -429,7 +429,7 @@
         };
 
         // Adiciona a função global para os botões do HTML
-        window.changeSlide = changeHeroSlide;
+        window.changeHeroSlide = changeHeroSlide;
 
         window.onload = function() {
             showHeroSlide(0);
@@ -494,7 +494,7 @@
             const slides = carouselInner.querySelectorAll('.carousel-slide');
 
             // Função para mostrar o slide
-            const showSlide = (index) => {
+            const showModalSlide = (index) => {
                 slides.forEach((slide, i) => {
                     slide.classList.remove('opacity-100');
                     slide.classList.add('opacity-0');
@@ -506,9 +506,9 @@
             };
 
             // Função para mudar o slide
-            const changeSlide = (direction) => {
+            const changeModalSlide = (direction) => {
                 currentSlide = (currentSlide + direction + slides.length) % slides.length;
-                showSlide(currentSlide);
+                showModalSlide(currentSlide);
             };
 
             // Adiciona botões de navegação se houver mais de uma imagem
@@ -516,18 +516,18 @@
                 const prevButton = document.createElement('button');
                 prevButton.className = 'absolute left-4 top-1/2 -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full hover:bg-opacity-70 transition-colors z-20 focus:outline-none';
                 prevButton.innerHTML = `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>`;
-                prevButton.onclick = () => changeSlide(-1);
+                prevButton.onclick = () => changeModalSlide(-1);
                 modalCarouselContainer.appendChild(prevButton);
 
                 const nextButton = document.createElement('button');
                 nextButton.className = 'absolute right-4 top-1/2 -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full hover:bg-opacity-70 transition-colors z-20 focus:outline-none';
                 nextButton.innerHTML = `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>`;
-                nextButton.onclick = () => changeSlide(1);
+                nextButton.onclick = () => changeModalSlide(1);
                 modalCarouselContainer.appendChild(nextButton);
 
                 // Autoplay
                 modalCarouselInterval = setInterval(() => {
-                    changeSlide(1);
+                    changeModalSlide(1);
                 }, 5000);
             }
         }
