@@ -129,16 +129,52 @@
             heroCarouselInterval = setInterval(() => changeHeroSlide(1), 5000);
         };
 
-        // Adiciona a função global para os botões do HTML
-        window.changeHeroSlide = changeHeroSlide;
-
         window.onload = function() {
             showHeroSlide(0);
             if (heroSlides.length > 1) {
                 startHeroCarousel();
             }
             applyThemeFromLocalStorage();
+
+            // Configura os event listeners para a navegação principal e móvel
+            setupNavigation();
         };
+
+        // Lógica para configurar a navegação, substituindo os 'onclick' no HTML
+        function setupNavigation() {
+            const navLinks = [
+                { id: 'nav-veiculos', page: 'home', section: 'veiculos' },
+                { id: 'nav-sobre', page: 'home', section: 'sobre' },
+                { id: 'nav-contato', page: 'home', section: 'contato' },
+                { id: 'mobile-nav-veiculos', page: 'home', section: 'veiculos' },
+                { id: 'mobile-nav-sobre', page: 'home', section: 'sobre' },
+                { id: 'mobile-nav-contato', page: 'home', section: 'contato' },
+                { id: 'hero-cta', page: 'home', section: 'veiculos' },
+                { id: 'home-logo', page: 'home', section: 'top' }, // Rola para o topo da home
+            ];
+
+            navLinks.forEach(linkData => {
+                const link = document.getElementById(linkData.id);
+                if (link) {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault(); // Impede o comportamento padrão do link
+
+                        if (linkData.page) {
+                            showPage(linkData.page);
+                        }
+
+                        if (linkData.section && linkData.section !== 'top') {
+                            scrollToSection(linkData.section);
+                        } else if (linkData.section === 'top') {
+                             window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }
+
+                        // Fecha o menu móvel se estiver aberto
+                        closeMobileMenu();
+                    });
+                }
+            });
+        }
 
         // Lida com o modal de detalhes do veículo
         const detailsModal = document.getElementById('details-modal');
@@ -156,7 +192,7 @@
             currentCarKey = carKey;
             modalTitle.textContent = car.name;
             setupModalCarousel(car.images);
-            modalDescription.textContent = car.description; // Define a descrição a partir dos dados do carro
+            modalDescription.textContent = car.description;
 
             detailsModal.classList.remove('hidden');
             detailsModal.classList.add('flex');
@@ -165,9 +201,7 @@
         function closeDetailsModal() {
             detailsModal.classList.remove('flex');
             detailsModal.classList.add('hidden');
-            // Limpa o carrossel do modal ao fechar
             modalCarouselContainer.innerHTML = '';
-            // Limpa o intervalo do carrossel para evitar bugs
             if (modalCarouselInterval) {
                 clearInterval(modalCarouselInterval);
             }
@@ -175,16 +209,14 @@
 
         // Lógica para configurar o carrossel do modal
         function setupModalCarousel(images) {
-            modalCarouselContainer.innerHTML = ''; // Limpa o conteúdo anterior
+            modalCarouselContainer.innerHTML = '';
 
             let currentSlide = 0;
 
-            // Cria o div principal do carrossel
             const carouselInner = document.createElement('div');
             carouselInner.className = 'relative w-full h-full';
             modalCarouselContainer.appendChild(carouselInner);
 
-            // Adiciona as imagens
             images.forEach((src, index) => {
                 const slide = document.createElement('div');
                 slide.className = `carousel-slide w-full h-full absolute inset-0 transition-opacity duration-1000 ${index === 0 ? 'opacity-100' : 'opacity-0'}`;
@@ -194,7 +226,6 @@
 
             const slides = carouselInner.querySelectorAll('.carousel-slide');
 
-            // Função para mostrar o slide
             const showModalSlide = (index) => {
                 slides.forEach((slide, i) => {
                     slide.classList.remove('opacity-100');
@@ -206,13 +237,11 @@
                 });
             };
 
-            // Função para mudar o slide
             const changeModalSlide = (direction) => {
                 currentSlide = (currentSlide + direction + slides.length) % slides.length;
                 showModalSlide(currentSlide);
             };
 
-            // Adiciona botões de navegação se houver mais de uma imagem
             if (images.length > 1) {
                 const prevButton = document.createElement('button');
                 prevButton.className = 'absolute left-4 top-1/2 -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full hover:bg-opacity-70 transition-colors z-20 focus:outline-none';
@@ -226,7 +255,6 @@
                 nextButton.onclick = () => changeModalSlide(1);
                 modalCarouselContainer.appendChild(nextButton);
 
-                // Autoplay
                 modalCarouselInterval = setInterval(() => {
                     changeModalSlide(1);
                 }, 5000);
@@ -249,3 +277,10 @@
             const isDark = document.documentElement.classList.toggle('dark');
             localStorage.setItem('theme', isDark ? 'dark' : 'light');
         });
+
+        // Adiciona a função global para os botões do HTML
+        window.changeHeroSlide = changeHeroSlide;
+        window.showPage = showPage;
+        window.showDetails = showDetails;
+        window.closeDetailsModal = closeDetailsModal;
+        window.closeMobileMenu = closeMobileMenu;
