@@ -1,4 +1,4 @@
-// Dados dos veículos com as imagens para o carrossel do modal e a descrição pré-escrita
+ // Dados dos veículos com as imagens para o carrossel do modal e a descrição pré-escrita
         const vehicleData = {
             'audi_r8': {
                 name: 'Audi R8',
